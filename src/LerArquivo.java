@@ -9,19 +9,18 @@ public class LerArquivo {
 		//printArchive();
 		//Console.println(findRoom("room 10"));
 		Rooms();
-	
 	}
-	
 	public Sala[] rooms = new Sala[32];
 	
 	public void Rooms(){
 		String direction;
-		String exit;
+		int exit;
 		int roomCount = 0;
 		String linha = null;
 		try{
 			Scanner arq = new Scanner(new File("data/Labirinto.txt"));
 			linha = arq.next();
+			Console.println(linha, "LINHA");
 			while(linha.equalsIgnoreCase("room")){
 				roomCount = arq.nextInt();
 				rooms[roomCount] = new Sala();
@@ -31,9 +30,8 @@ public class LerArquivo {
 					if(direction.equalsIgnoreCase("room")){
 						break;
 					}else{
-					
-					exit = arq.next();
-					rooms[roomCount].addExit(direction, exit);
+						exit = arq.nextInt();
+						rooms[roomCount].addExit(direction, exit);
 					}
 				}
 				if(!arq.hasNext()){
