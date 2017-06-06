@@ -9,45 +9,9 @@ public class LerArquivo {
 		//printArchive();
 		//Console.println(findRoom("room 10"));
 		Rooms();
-	/*for(int i=0; i<20; i++){
-		Console.println(rooms[i]);
-	}*/
+	
 	}
-	public void printArchive(){
-		String linha = "ND";
-		try{
-			@SuppressWarnings("resource")
-			Scanner arq = new Scanner(new File("data/Labirinto.txt")).useDelimiter("\n");
-			while(arq.hasNext()){
-				linha = arq.next();
-				Console.println(linha);
-			}
-			arq.close();
-			}catch (IOException ioe) {
-				System.err.printf("Erro na abertura do arquivo: %s.\n",
-						ioe.getMessage());
-			}
-	}
-	@SuppressWarnings("resource")
-	public String findRoom(String numRoom){
-		String linha = "ND";
-		try{
-			Scanner arq = new Scanner(new File("data/Labirinto.txt")).useDelimiter("\n");
-			while(arq.hasNext()){
-				linha = arq.next();
-				if(linha.startsWith(numRoom)){
-					return linha;
-				}
-				
-			}
-			arq.close();
-			}catch (IOException ioe) {
-				System.err.printf("Erro na abertura do arquivo: %s.\n",
-						ioe.getMessage());
-			}
-		return linha;
-		
-	}
+	
 	public Sala[] rooms = new Sala[32];
 	
 	public void Rooms(){
@@ -58,7 +22,6 @@ public class LerArquivo {
 		try{
 			Scanner arq = new Scanner(new File("data/Labirinto.txt"));
 			linha = arq.next();
-			Console.println(linha, "LINHA");
 			while(linha.equalsIgnoreCase("room")){
 				roomCount = arq.nextInt();
 				rooms[roomCount] = new Sala();
